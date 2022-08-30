@@ -20,22 +20,31 @@ const ProgressBar = ({ handleNextButton, hasAnswered, restartQuiz }) => {
   const quizOver = useSelector((store) => store.quiz.quizOver);
 
   return (
-    <ProgressContainer>
-      <NavButtonContainer>
-        {hasAnswered && (
-          <NextButton>
-            <NavButtonIcon onClick={handleNextButton} src={next} />
-          </NextButton>
-        )}
-        {quizOver && (
-          <NextButton>
-            <NavButtonIcon onClick={restartQuiz} src={restart} />
-          </NextButton>
-        )}
-      </NavButtonContainer>
-      <ProgressStatus width={percentCompleted} />
-    </ProgressContainer>
-  );
+    <>
+      {hasAnswered && (
+        <div>
+          Press the arrow to continue to the next question!
+        </div>
+      )}
+      <ProgressContainer>
+        <NavButtonContainer>
+          {hasAnswered && (
+            
+              <NextButton>
+                <NavButtonIcon onClick={handleNextButton} src={next} />
+              </NextButton>
+            
+          )}
+          {quizOver && (
+            <NextButton>
+              <NavButtonIcon onClick={restartQuiz} src={restart} />
+            </NextButton>
+          )}
+        </NavButtonContainer>
+        <ProgressStatus width={percentCompleted} />
+      </ProgressContainer>
+    </>
+    );
 };
 
 export default ProgressBar;

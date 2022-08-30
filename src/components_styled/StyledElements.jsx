@@ -1,4 +1,4 @@
-import styled from "styled-components";
+import styled from "styled-components/macro";
 
 export const Main = styled.main`
   display: flex;
@@ -76,7 +76,8 @@ export const Button = styled.button`
   align-self: stretch;
   padding: 20px 18px;
   font-size: 18px;
-  background-color: rgba(0, 0, 0, 0);
+  // background-color: rgba(0, 0, 0, 0);
+  background-color: ${(props) => props.inputColor || 'rgba(0,0,0,0)'};
   color: white;
   font-weight: bold;
   border-radius: 0%;

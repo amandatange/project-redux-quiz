@@ -34,11 +34,19 @@ export const CurrentQuestion = ({ setQuizDone }) => {
 
   const quizOver = useSelector((store) => store.quiz.quizOver);
 
+  const isCorrect = (index) => {
+    if (question.correctAnswerIndex === index) {
+      return true
+    }
+    return false
+  };
+
   const onAnswerSubmit = (id, index) => {
     setHasAnswered(true);
     dispatch(quiz.actions.submitAnswer({ questionId: id, answerIndex: index }));
     // setTimeout(() => setHasAnswered(true), 800);
-    if (question.correctAnswerIndex === index) {
+    // if (question.correctAnswerIndex === index) {
+      if (isCorrect(index)) {
       party.confetti(document.body, {
         count: party.variation.range(100, 500),
         size: party.variation.range(1.8, 2.6),
@@ -55,6 +63,8 @@ export const CurrentQuestion = ({ setQuizDone }) => {
       // });
     }
   };
+
+  
 
   const handleNextButton = () => {
     dispatch(quiz.actions.goToNextQuestion());
@@ -79,6 +89,7 @@ export const CurrentQuestion = ({ setQuizDone }) => {
               disabled={hasAnswered}
               onClick={() => onAnswerSubmit(question.id, index)}
               key={item}
+              inputColor={hasAnswered && (isCorrect(index) ? "hsla(120, 100%, 80%, .3)" : "hsla(0, 100%, 80%, .3)")}
             >
               {item}
             </Button>
