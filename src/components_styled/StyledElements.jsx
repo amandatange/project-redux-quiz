@@ -49,24 +49,21 @@ export const ButtonContainer = styled.section`
   grid-template-columns: repeat(2, 1fr);
   grid-template-rows: repeat(2, 1fr);
   align-items: center;
-  margin: 5rem 0;
+  margin: 5rem 0 2rem 0;
   gap: 20px;
   justify-items: center;
 
   @media (min-width: 667px) {
     align-items: center;
-    margin: 8rem 0;
+    margin: 8rem 0 3rem 0;
     gap: 70px;
-  }
-
-  @media (min-width: 1024px) {
-    gap: 15px;
   }
 
   @media (min-width: 1024px) {
     width: 850px;
     margin: 0 auto;
     display: flex;
+    gap: 15px;
   }
 `;
 
@@ -76,8 +73,7 @@ export const Button = styled.button`
   align-self: stretch;
   padding: 20px 18px;
   font-size: 18px;
-  // background-color: rgba(0, 0, 0, 0);
-  background-color: ${(props) => props.inputColor || 'rgba(0,0,0,0)'};
+  background-color: ${(props) => props.BgColor};
   color: white;
   font-weight: bold;
   border-radius: 0%;

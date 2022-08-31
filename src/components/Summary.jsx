@@ -14,8 +14,6 @@ const Summary = ({ setQuizDone }) => {
     setQuizDone(false);
   };
 
-  console.log(answers);
-
   return (
     <SummaryDiv>
       <h1>Quiz is done!</h1>

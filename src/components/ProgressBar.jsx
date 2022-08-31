@@ -29,11 +29,9 @@ const ProgressBar = ({ handleNextButton, hasAnswered, restartQuiz }) => {
       <ProgressContainer>
         <NavButtonContainer>
           {hasAnswered && (
-            
-              <NextButton>
-                <NavButtonIcon onClick={handleNextButton} src={next} />
-              </NextButton>
-            
+            <NextButton>
+              <NavButtonIcon onClick={handleNextButton} src={next} />
+            </NextButton>
           )}
           {quizOver && (
             <NextButton>
@@ -44,7 +42,7 @@ const ProgressBar = ({ handleNextButton, hasAnswered, restartQuiz }) => {
         <ProgressStatus width={percentCompleted} />
       </ProgressContainer>
     </>
-    );
+  );
 };
 
 export default ProgressBar;

@@ -27,6 +27,7 @@ for (const sound of arr) {
 export const CurrentQuestion = ({ setQuizDone }) => {
   const randomAudioIndex = Math.floor(Math.random() * audio.length);
   const [hasAnswered, setHasAnswered] = useState(false);
+  const [guessedQuestionIndex, setGuessedQuestionIndex] = useState();
   const dispatch = useDispatch();
   const question = useSelector(
     (store) => store.quiz.questions[store.quiz.currentQuestionIndex]
@@ -41,34 +42,38 @@ export const CurrentQuestion = ({ setQuizDone }) => {
     return false
   };
 
+  const setColor = (index) => {
+    if (hasAnswered && guessedQuestionIndex === index) {
+      if (isCorrect(index)) {
+        return "hsla(120, 100%, 80%, .3)"
+      } else {
+        return "hsla(0, 100%, 80%, .3)"
+      }
+    }
+    return 'hsla(0,0%,0%,0)';
+  }
+
   const onAnswerSubmit = (id, index) => {
     setHasAnswered(true);
     dispatch(quiz.actions.submitAnswer({ questionId: id, answerIndex: index }));
-    // setTimeout(() => setHasAnswered(true), 800);
-    // if (question.correctAnswerIndex === index) {
       if (isCorrect(index)) {
       party.confetti(document.body, {
         count: party.variation.range(100, 500),
         size: party.variation.range(1.8, 2.6),
         shapes: ["star"],
       });
+      setGuessedQuestionIndex(index);
     } else {
       setHasAnswered(true);
       audio[randomAudioIndex].play();
-      // party.confetti(document.body, {
-      //   count: party.variation.range(500, 1000),
-      //   size: party.variation.range(0.8, 1.6),
-      //   color: party.Color.fromHex("#4a412a"),
-      //   shapes: ["square"],
-      // });
+      setGuessedQuestionIndex(index);
     }
   };
-
-  
 
   const handleNextButton = () => {
     dispatch(quiz.actions.goToNextQuestion());
     setHasAnswered(false);
+    setGuessedQuestionIndex(null);
   };
 
   if (quizOver) {
@@ -89,7 +94,7 @@ export const CurrentQuestion = ({ setQuizDone }) => {
               disabled={hasAnswered}
               onClick={() => onAnswerSubmit(question.id, index)}
               key={item}
-              inputColor={hasAnswered && (isCorrect(index) ? "hsla(120, 100%, 80%, .3)" : "hsla(0, 100%, 80%, .3)")}
+              BgColor={() => setColor(index)}
             >
               {item}
             </Button>
