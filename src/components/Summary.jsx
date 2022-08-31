@@ -24,6 +24,16 @@ const Summary = ({ setQuizDone }) => {
   return (
     <SummaryDiv>
       <h1>Quiz is done!</h1>
+      <QADiv>
+        <h3>You got {counter} / 6 correct!</h3>
+        {counter > 4 ? (
+          <h3>WOOOOOOHOOOOO!</h3>
+        ) : counter > 2 ? (
+          <h3>Not bad!</h3>
+        ) : (
+          <h3>Better luck next time!</h3>
+        )}
+      </QADiv>
       {answers.map((answer, index) => {
         const correctAnswer =
           answer.question.options[answer.question.correctAnswerIndex];
@@ -48,16 +58,7 @@ const Summary = ({ setQuizDone }) => {
         );
       })}
       <br />
-      <QADiv>
-        <h3>You got {counter} / 6 correct!</h3>
-        {counter > 4 ? (
-          <h3>WOOOOOOHOOOOO!</h3>
-        ) : counter > 2 ? (
-          <h3>Not bad!</h3>
-        ) : (
-          <h3>Better luck next time!</h3>
-        )}
-      </QADiv>
+      
       <NextbuttonContainer>
         <Nextbutton onClick={restartQuiz}>
           <p>Restart quiz?</p>

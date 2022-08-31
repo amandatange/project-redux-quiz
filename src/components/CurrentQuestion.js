@@ -121,8 +121,8 @@ export const CurrentQuestion = ({ setQuizDone }) => {
         })}
       </ButtonContainer>
       <NextbuttonContainer>
-        <Nextbutton onClick={handleNextButton}>
-          <p>{question.id < 4 ? "next question" : "finish quiz"}</p>
+        <Nextbutton onClick={handleNextButton} disabled={!hasAnswered}>
+          <p>{question.id < 6 ? "next question" : "finish quiz"}</p>
           <NavButtonIcon src={next} />
         </Nextbutton>
       </NextbuttonContainer>

@@ -7,21 +7,68 @@ export const Main = styled.main`
   align-items: center;
 `;
 
-export const Title = styled.h1`
+export const MainTitle = styled.h1`
+  font-family: Calibri;
+  font-weight: 500;
+  text-transform: uppercase;
+  letter-spacing: 12px;
+  color: #fff;
+  text-shadow:
+      0 0 7px #fff,
+      0 0 10px #fff,
+      0 0 21px #fff,
+      0 0 42px #fff,
+      0 0 82px #fff,
+      0 0 92px #14c0dc,
+      0 0 102px #14c0dc,
+      0 0 151px #14c0dc;
+  animation: flicker 1.5s infinite alternate;     
   margin-top: 20px;
   text-align: center;
-  color: white;
-  font-size: 25px;
+  font-size: 28px;
   white-space: pre-line;
 
   @media (min-width: 667px) {
-    font-size: 37px;
+    font-size: 36px;
   }
 
   @media (min-width: 1024px) {
     text-align: center;
     color: white;
-    font-size: 37px;
+    font-size: 44px;
+  }
+
+  @keyframes flicker {
+    0%, 18%, 22%, 25%, 53%, 57%, 100% {
+      text-shadow:
+        0 0 4px #fff,
+        0 0 11px #fff,
+        0 0 19px #fff,
+        0 0 40px #fff,
+        0 0 80px #fff,
+        0 0 90px #14c0dc,
+        0 0 100px #14c0dc,
+        0 0 150px #14c0dc;
+    }
+    20%, 24%, 55% {        
+        text-shadow: none;
+    }    
+  }
+`;
+
+export const Title = styled.h2`
+  margin-top: 20px;
+  text-align: center;
+  color: white;
+  font-size: 20px;
+  white-space: pre-line;
+
+  @media (min-width: 667px) {
+    font-size: 24px;
+  }
+
+  @media (min-width: 1024px) {
+    font-size: 28px;
   }
 
   p {
