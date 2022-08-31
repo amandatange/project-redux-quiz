@@ -28,6 +28,7 @@ export const CurrentQuestion = ({ setQuizDone }) => {
   const randomAudioIndex = Math.floor(Math.random() * audio.length);
   const [hasAnswered, setHasAnswered] = useState(false);
   const [guessedQuestionIndex, setGuessedQuestionIndex] = useState();
+  const [symbol, setSymbol] = useState('');
   const dispatch = useDispatch();
   const question = useSelector(
     (store) => store.quiz.questions[store.quiz.currentQuestionIndex]
@@ -63,10 +64,12 @@ export const CurrentQuestion = ({ setQuizDone }) => {
         shapes: ["star"],
       });
       setGuessedQuestionIndex(index);
+      setSymbol('✔️');
     } else {
       setHasAnswered(true);
       audio[randomAudioIndex].play();
       setGuessedQuestionIndex(index);
+      setSymbol('❌');
     }
   };
 
@@ -97,6 +100,9 @@ export const CurrentQuestion = ({ setQuizDone }) => {
               BgColor={() => setColor(index)}
             >
               {item}
+              {guessedQuestionIndex === index && (
+                <p>{symbol}</p>
+              )}
             </Button>
           );
         })}
