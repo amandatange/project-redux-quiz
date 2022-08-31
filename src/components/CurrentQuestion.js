@@ -3,12 +3,16 @@ import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { quiz } from "reducers/quiz";
 import party from "party-js";
+import next from "../assets/next.png";
 
 import ProgressBar from "./ProgressBar";
 import {
   ButtonContainer,
   Button,
   Title,
+  Nextbutton,
+  NextbuttonContainer,
+  NavButtonIcon
 } from "components_styled/StyledElements";
 import howcouldthishappen from "../assets/howcouldthishappentome.mp3";
 import howdareyou from "../assets/howdareyou.mp3";
@@ -28,7 +32,7 @@ export const CurrentQuestion = ({ setQuizDone }) => {
   const randomAudioIndex = Math.floor(Math.random() * audio.length);
   const [hasAnswered, setHasAnswered] = useState(false);
   const [guessedQuestionIndex, setGuessedQuestionIndex] = useState();
-  const [symbol, setSymbol] = useState('');
+  const [symbol, setSymbol] = useState('❌');
   const dispatch = useDispatch();
   const question = useSelector(
     (store) => store.quiz.questions[store.quiz.currentQuestionIndex]
@@ -64,7 +68,7 @@ export const CurrentQuestion = ({ setQuizDone }) => {
         shapes: ["star"],
       });
       setGuessedQuestionIndex(index);
-      setSymbol('✔️');
+      setSymbol('✅');
     } else {
       setHasAnswered(true);
       audio[randomAudioIndex].play();
@@ -107,11 +111,17 @@ export const CurrentQuestion = ({ setQuizDone }) => {
           );
         })}
       </ButtonContainer>
-      <ProgressBar
+      <NextbuttonContainer>
+        <Nextbutton>
+          <p>next question</p>
+          <NavButtonIcon src={next} />
+        </Nextbutton>
+      </NextbuttonContainer>
+      {/* <ProgressBar
         handleNextButton={handleNextButton}
         hasAnswered={hasAnswered}
         setQuizDone={setQuizDone}
-      />
+      /> */}
     </>
   );
 };

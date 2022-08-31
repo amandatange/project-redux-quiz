@@ -108,6 +108,22 @@ export const Button = styled.button`
   }
 `;
 
+export const Nextbutton = styled(Button)`
+  background-color: rgba(255, 255, 255, 0.2);
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  margin: 0 auto;
+  margin-bottom: 5rem;
+  min-height: 0;
+  width: fit-content;
+`
+
+export const NextbuttonContainer = styled.div`
+  margin: 0 auto;
+  padding: 1rem;
+`;
+
 export const NavButtonContainer = styled.div`
   display: flex;
   justify-content: flex-end;

@@ -32,7 +32,7 @@ const Summary = ({ setQuizDone }) => {
             </h2>
             <p>
               You answered {answer.answer} which was{" "}
-              {answer.isCorrect ? "correct! ✔️" : "sadly incorrect. ❌"}
+              {answer.isCorrect ? "correct! ✅" : "sadly incorrect. ❌"}
             </p>
             {!answer.isCorrect && (
               <p>The correct answer was {correctAnswer}.</p>
