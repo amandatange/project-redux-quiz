@@ -30,9 +30,15 @@ for (const sound of arr) {
 
 export const CurrentQuestion = ({ setQuizDone }) => {
   const randomAudioIndex = Math.floor(Math.random() * audio.length);
+  const colorGreen = "hsla(169, 100%, 50%, .3)";
+  const colorRed = "hsla(315, 100%, 50%, .2)";
+  const colorNone = "hsla(0,0%,0%,0)";
+
+
   const [hasAnswered, setHasAnswered] = useState(false);
   const [guessedQuestionIndex, setGuessedQuestionIndex] = useState();
   const [symbol, setSymbol] = useState('❌');
+
   const dispatch = useDispatch();
   const question = useSelector(
     (store) => store.quiz.questions[store.quiz.currentQuestionIndex]
@@ -50,12 +56,12 @@ export const CurrentQuestion = ({ setQuizDone }) => {
   const setColor = (index) => {
     if (hasAnswered && guessedQuestionIndex === index) {
       if (isCorrect(index)) {
-        return "hsla(120, 100%, 80%, .3)"
+        return colorGreen;
       } else {
-        return "hsla(0, 100%, 80%, .3)"
+        return colorRed;
       }
     }
-    return 'hsla(0,0%,0%,0)';
+    return colorNone;
   }
 
   const onAnswerSubmit = (id, index) => {
@@ -115,16 +121,11 @@ export const CurrentQuestion = ({ setQuizDone }) => {
         })}
       </ButtonContainer>
       <NextbuttonContainer>
-        <Nextbutton>
-          <p>next question</p>
+        <Nextbutton onClick={handleNextButton}>
+          <p>{question.id < 4 ? "next question" : "finish quiz"}</p>
           <NavButtonIcon src={next} />
         </Nextbutton>
       </NextbuttonContainer>
-      {/* <ProgressBar
-        handleNextButton={handleNextButton}
-        hasAnswered={hasAnswered}
-        setQuizDone={setQuizDone}
-      /> */}
     </>
   );
 };
