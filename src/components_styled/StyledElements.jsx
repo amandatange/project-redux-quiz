@@ -23,6 +23,10 @@ export const Title = styled.h1`
     color: white;
     font-size: 37px;
   }
+
+  p {
+    font-size: 20px;
+  }
 `;
 
 export const Container = styled.div`

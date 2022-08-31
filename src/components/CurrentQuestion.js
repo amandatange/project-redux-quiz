@@ -93,7 +93,10 @@ export const CurrentQuestion = ({ setQuizDone }) => {
 
   return (
     <>
-      <Title>{question.questionText}</Title>
+      <Title>
+        <p>Question {question.id} / 6:</p>
+        {question.questionText}
+      </Title>
       <ButtonContainer>
         {question.options.map((item, index) => {
           return (
