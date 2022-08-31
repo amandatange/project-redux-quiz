@@ -5,7 +5,7 @@ import { quiz } from "reducers/quiz";
 import party from "party-js";
 import next from "../assets/next.png";
 
-import ProgressBar from "./ProgressBar";
+// import ProgressBar from "./ProgressBar";
 import {
   ButtonContainer,
   Button,
