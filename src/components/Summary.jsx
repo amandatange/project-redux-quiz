@@ -1,8 +1,15 @@
 import React from "react";
 import { useSelector, useDispatch } from "react-redux";
-import { SummaryDiv, QADiv } from "components_styled/StyledElements";
+import {
+  SummaryDiv,
+  QADiv,
+  Nextbutton,
+  NextbuttonContainer,
+  NavButtonIcon } from "components_styled/StyledElements";
 import { quiz } from "reducers/quiz";
-import ProgressBar from "./ProgressBar";
+// import ProgressBar from "./ProgressBar";
+
+import next from "../assets/next.png";
 
 const Summary = ({ setQuizDone }) => {
   const dispatch = useDispatch();
@@ -51,7 +58,13 @@ const Summary = ({ setQuizDone }) => {
           <h3>Better luck next time!</h3>
         )}
       </QADiv>
-      <ProgressBar setQuizDone={setQuizDone} restartQuiz={restartQuiz} />
+      <NextbuttonContainer>
+        <Nextbutton onClick={restartQuiz}>
+          <p>Restart quiz?</p>
+          <NavButtonIcon src={next} />
+        </Nextbutton>
+      </NextbuttonContainer>
+      {/* <ProgressBar setQuizDone={setQuizDone} restartQuiz={restartQuiz} /> */}
     </SummaryDiv>
   );
 };
