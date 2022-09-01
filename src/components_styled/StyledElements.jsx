@@ -175,29 +175,10 @@ export const NextbuttonContainer = styled.div`
   padding: 1rem;
 `;
 
-export const NavButtonContainer = styled.div`
-  display: flex;
-  justify-content: flex-end;
-  width: 100%;
-  z-index: 1;
-`;
-
 export const NavButtonIcon = styled.img`
   width: 30px;
   height: 30px;
   margin-left: 4px;
-`;
-
-export const NextButton = styled.button`
-  border-radius: 50%;
-  border: none;
-  background-color: rgba(206, 212, 218, 0.6);
-  height: 48px;
-  width: 48px;
-  display: flex;
-  justify-content: center;
-  align-items: center;
-  cursor: pointer;
 `;
 
 export const SummaryDiv = styled.div`
@@ -233,30 +214,4 @@ export const QADiv = styled.div`
     font-size: 1.25rem;
     font-weight: 500;
   }
-`;
-
-export const ProgressContainer = styled.div`
-  width: 100%;
-  height: 50px;
-  border-radius: 25px;
-  background-color: rgba(206, 212, 218, 0.6);
-  position: relative;
-  overflow: hidden;
-  display: flex;
-  justify-content: space-between;
-  align-items: center;
-  border: 1px solid white;
-`;
-
-export const ProgressStatus = styled.div`
-  width: ${(props) => props.width};
-  background: linear-gradient(
-    90deg,
-    rgba(202, 240, 248, 0.6) 0%,
-    rgba(144, 224, 239, 0.6) 100%
-  );
-  transition: width 1s ease-in-out;
-  height: 100%;
-  position: absolute;
-  top: 0;
 `;
