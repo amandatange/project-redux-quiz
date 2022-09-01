@@ -7,14 +7,13 @@ import {
   NextbuttonContainer,
   NavButtonIcon } from "components_styled/StyledElements";
 import { quiz } from "reducers/quiz";
-// import ProgressBar from "./ProgressBar";
 
 import next from "../assets/next.png";
 
 const Summary = ({ setQuizDone }) => {
   const dispatch = useDispatch();
   const answers = useSelector((store) => store.quiz.answers);
-  let counter = 0;
+  const points = useSelector((store) => store.quiz.points);
 
   const restartQuiz = () => {
     dispatch(quiz.actions.restart());
@@ -25,10 +24,10 @@ const Summary = ({ setQuizDone }) => {
     <SummaryDiv>
       <h1>Quiz is done!</h1>
       <QADiv>
-        <h3>You got {counter} / 6 correct!</h3>
-        {counter > 4 ? (
+        <h3>You got {points} / 6 correct!</h3>
+        {points > 4 ? (
           <h3>WOOOOOOHOOOOO!</h3>
-        ) : counter > 2 ? (
+        ) : points > 2 ? (
           <h3>Not bad!</h3>
         ) : (
           <h3>Better luck next time!</h3>
@@ -37,9 +36,6 @@ const Summary = ({ setQuizDone }) => {
       {answers.map((answer, index) => {
         const correctAnswer =
           answer.question.options[answer.question.correctAnswerIndex];
-        if (correctAnswer === answer.answer) {
-          counter++;
-        }
 
         return (
           <QADiv key={answer.questionId}>
@@ -65,7 +61,6 @@ const Summary = ({ setQuizDone }) => {
           <NavButtonIcon src={next} />
         </Nextbutton>
       </NextbuttonContainer>
-      {/* <ProgressBar setQuizDone={setQuizDone} restartQuiz={restartQuiz} /> */}
     </SummaryDiv>
   );
 };
