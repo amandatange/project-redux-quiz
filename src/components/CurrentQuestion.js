@@ -1,11 +1,9 @@
 import React from "react";
+import party from "party-js";
+
 import { useState } from "react";
 import { useSelector, useDispatch } from "react-redux";
 import { quiz } from "reducers/quiz";
-import party from "party-js";
-import next from "../assets/next.png";
-
-// import ProgressBar from "./ProgressBar";
 import {
   ButtonContainer,
   Button,
@@ -14,6 +12,8 @@ import {
   NextbuttonContainer,
   NavButtonIcon
 } from "components_styled/StyledElements";
+
+import next from "../assets/next.png";
 import howcouldthishappen from "../assets/howcouldthishappentome.mp3";
 import howdareyou from "../assets/howdareyou.mp3";
 import letmeaskyou from "../assets/letmeaskyousomething.mp3";
@@ -73,6 +73,7 @@ export const CurrentQuestion = ({ setQuizDone }) => {
         size: party.variation.range(1.8, 2.6),
         shapes: ["star"],
       });
+      dispatch(quiz.actions.addPoint());
       setGuessedQuestionIndex(index);
       setSymbol('✅');
     } else {
